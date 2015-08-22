@@ -15,12 +15,13 @@ NEI <- readRDS("./data/summarySCC_PM25.rds")
  
 # select the data
 data <- tapply(NEI$Emissions, NEI$year, sum)
+names(data)<-as.integer(names(data)) 
 
 #create the file
 png(filename="Plot1.png", width=480, height=480, units ="px")
 
 #plot the data
-plot(data, xlab = "Year", ylab="PM2.5 Total Emissions", main="PM2.5 Emission in U.S. by Year")
+plot(names(data),data, xlab = "Year", ylab="PM2.5 Total Emissions", main="PM2.5 Emission in U.S. by Year")
 
 #close the file
 dev.off()

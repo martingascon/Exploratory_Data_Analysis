@@ -14,11 +14,12 @@ NEI <- readRDS("./data/summarySCC_PM25.rds")
 data2 <- subset (NEI, fips == "24510")
 data2 <- tapply(data2$Emissions, data2$year, sum)
 
+names(data2)<-as.integer(names(data2)) 
 # create the file
 png(filename="Plot2.png", width=480, height=480, units ="px")
 
 # plot the data
-plot(data2, xlab = "Year", ylab="PM2.5 Total Emissions", main="PM2.5 Emission in Baltimore by Year")
+plot(names(data2), data2, xlab = "Year", ylab="PM2.5 Total Emissions", main="PM2.5 Emission in Baltimore by Year")
 
 # close the file
 dev.off()
